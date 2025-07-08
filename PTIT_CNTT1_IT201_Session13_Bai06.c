@@ -25,11 +25,10 @@ char pop(Stack *stack) {
     return stack->arr[stack->top--];
 }
 bool checkReverse(char *str) {
-    int size = strlen(str);
-    Stack stack = createStack(size);
-    for (int i = 0; i < size / 2; i++) push(&stack, str[i]);
-    int cur = (size % 2 == 0) ? size / 2 : size / 2 + 1;
-    while (cur < size) if (pop(&stack) != str[cur++]) return false;
+    Stack stack = createStack(strlen(str));
+    for (int i = 0; i < strlen(str) / 2; i++) push(&stack, str[i]);
+    int cur = (strlen(str) % 2 == 0) ? strlen(str) / 2 : strlen(str) / 2 + 1;
+    while (cur < strlen(str)) if (pop(&stack) != str[cur++]) return false;
     free(stack.arr);
     return true;
 }
